@@ -1,0 +1,103 @@
+/******************************************************************************
+ * Spine Runtimes Software License v2.5
+ *
+ * Copyright (c) 2013-2016, Esoteric Software
+ * All rights reserved.
+ *
+ * You are granted a perpetual, non-exclusive, non-sublicensable, and
+ * non-transferable license to use, install, execute, and perform the Spine
+ * Runtimes software and derivative works solely for personal or internal
+ * use. Without the written permission of Esoteric Software (see Section 2 of
+ * the Spine Software License Agreement), you may not (a) modify, translate,
+ * adapt, or develop new applications using the Spine Runtimes or otherwise
+ * create derivative works or improvements of the Spine Runtimes or (b) remove,
+ * delete, alter, or obscure any trademarks or any copyright, trademark, patent,
+ * or other intellectual property or proprietary rights notices on or in the
+ * Software, including any copy thereof. Redistributions in binary or source
+ * form must include this license and terms.
+ *
+ * THIS SOFTWARE IS PROVIDED BY ESOTERIC SOFTWARE "AS IS" AND ANY EXPRESS OR
+ * IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+ * MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO
+ * EVENT SHALL ESOTERIC SOFTWARE BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+ * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+ * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES, BUSINESS INTERRUPTION, OR LOSS OF
+ * USE, DATA, OR PROFITS) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER
+ * IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
+ *****************************************************************************/
+
+package spine.animation;
+import spine.attachments.VertexAttachment;
+import spine.Event;
+import spine.Skeleton;
+import spine.Slot;
+
+class DeformTimeline extends CurveTimeline {
+	public var slotIndex:Int;
+	public var frames:Vector<Number>;
+	public var frameVertices:Vector<Vector<Number>>;
+	public var attachment:VertexAttachment;
+
+	public function new (frameCount:Int) {
+		super(frameCount);
+		frames = new Vector<Number>(frameCount, true);
+		frameVertices = new Vector<Vector<Number>>(frameCount, true);
+	}
+
+	/** Sets the time and value of the specified keyframe. */
+	public function setFrame (frameIndex:Int, time:Number, vertices:Vector<Number>) : Void {
+		frames[frameIndex] = time;
+		frameVertices[frameIndex] = vertices;
+	}
+
+	override public function apply (skeleton:Skeleton, lastTime:Number, time:Number, firedEvents:Vector<Event>, alpha:Number) : Void {
+		var slot:Slot = skeleton.slots[slotIndex];
+		var slotAttachment:VertexAttachment = Std.instance(slot.attachment, VertexAttachment);
+		if (slotAttachment == null || !slotAttachment.applyDeform(attachment)) return;
+
+		var frames:Vector<Number> = this.frames;
+		if (time < frames[0]) return; // Time is before first frame.
+
+		var frameVertices:Vector<Vector<Number>> = this.frameVertices;
+		var vertexCount:Int = frameVertices[0].length;
+
+		var vertices:Vector<Number> = slot.attachmentVertices;
+		if (vertices.length != vertexCount) alpha = 1; // Don't mix from uninitialized slot vertices.
+		vertices.length = vertexCount;
+
+		var i:Int;
+		if (time >= frames[frames.length - 1]) { // Time is after last frame.
+			var lastVertices:Vector<Number> = frameVertices[int(frames.length - 1)];
+			if (alpha < 1) {
+				for (i in 0...vertexCount)
+					vertices[i] += (lastVertices[i] - vertices[i]) * alpha;
+			} else {
+				for (i in 0...vertexCount)
+					vertices[i] = lastVertices[i];
+			}
+			return;
+		}
+
+		// Interpolate between the previous frame and the current frame.
+		var frame:Int = Animation.binarySearch1(frames, time);
+		var prevVertices:Vector<Number> = frameVertices[int(frame - 1)];
+		var nextVertices:Vector<Number> = frameVertices[frame];
+		var frameTime:Number = frames[frame];
+		var percent:Number = getCurvePercent(frame - 1, 1 - (time - frameTime) / (frames[frame - 1] - frameTime));
+
+		var prev:Number;
+		if (alpha < 1) {
+			for (i in 0...vertexCount) {
+				prev = prevVertices[i];
+				vertices[i] += (prev + (nextVertices[i] - prev) * percent - vertices[i]) * alpha;
+			}
+		} else {
+			for (i in 0...vertexCount) {
+				prev = prevVertices[i];
+				vertices[i] = prev + (nextVertices[i] - prev) * percent;
+			}
+		}
+	}
+}
