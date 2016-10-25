@@ -32,13 +32,13 @@ package spine.animation;
 import spine.Event;
 
 class TrackEntry {
-	public var next:TrackEntry;
-	@:allow(spine) var previous:TrackEntry;
-	public var animation:Animation;
-	public var loop:Bool;
-	public var delay:Number; public var time:Number = 0; public var lastTime:Number = -1; public var endTime:Number; public var timeScale:Number = 1;
-	@:allow(spine) var mixTime:Number; @:allow(spine) var mixDuration:Number; @:allow(spine) var mix:Number = 1;
-	public var onStart:Int -> Void; public var onEnd:Int -> Void; public var onComplete:Int -> Int -> Void; public var onEvent:Int -> Event -> Void;
+	public var next:TrackEntry = Default.object;
+	@:allow(spine) var previous:TrackEntry = Default.object;
+	public var animation:Animation = Default.object;
+	public var loop:Bool = Default.bool;
+	public var delay:Number = Default.float; public var time:Number = 0; public var lastTime:Number = -1; public var endTime:Number = Default.float; public var timeScale:Number = 1;
+	@:allow(spine) var mixTime:Number = Default.float; @:allow(spine) var mixDuration:Number = Default.float; @:allow(spine) var mix:Number = 1;
+	public var onStart:Int -> Void = Default.object; public var onEnd:Int -> Void = Default.object; public var onComplete:Int -> Int -> Void = Default.object; public var onEvent:Int -> Event -> Void = Default.object;
 
 	public function new () {
 	}

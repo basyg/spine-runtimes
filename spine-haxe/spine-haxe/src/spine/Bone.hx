@@ -37,23 +37,23 @@ class Bone implements Updatable {
 	@:allow(spine) var _skeleton:Skeleton;
 	@:allow(spine) var _parent:Bone;
 	@:allow(spine) var _children:Vector<Bone> = new Vector<Bone>();
-	public var x:Number;
-	public var y:Number;
-	public var rotation:Number;
-	public var scaleX:Number;
-	public var scaleY:Number;
-	public var shearX:Number;
-	public var shearY:Number;
-	public var appliedRotation:Number;	
+	public var x:Number = Default.float;
+	public var y:Number = Default.float;
+	public var rotation:Number = Default.float;
+	public var scaleX:Number = Default.float;
+	public var scaleY:Number = Default.float;
+	public var shearX:Number = Default.float;
+	public var shearY:Number = Default.float;
+	public var appliedRotation:Number = Default.float;	
 
-	@:allow(spine) var _a:Number;
-	@:allow(spine) var _b:Number;
-	@:allow(spine) var _c:Number;
-	@:allow(spine) var _d:Number;
-	@:allow(spine) var _worldX:Number;
-	@:allow(spine) var _worldY:Number;
-	@:allow(spine) var _worldSignX:Number;
-	@:allow(spine) var _worldSignY:Number;
+	@:allow(spine) var _a:Number = Default.float;
+	@:allow(spine) var _b:Number = Default.float;
+	@:allow(spine) var _c:Number = Default.float;
+	@:allow(spine) var _d:Number = Default.float;
+	@:allow(spine) var _worldX:Number = Default.float;
+	@:allow(spine) var _worldY:Number = Default.float;
+	@:allow(spine) var _worldSignX:Number = Default.float;
+	@:allow(spine) var _worldSignY:Number = Default.float;
 	
 	@:allow(spine) var _sorted:Bool;
 

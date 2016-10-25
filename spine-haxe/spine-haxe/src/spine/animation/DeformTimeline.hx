@@ -35,10 +35,10 @@ import spine.Skeleton;
 import spine.Slot;
 
 class DeformTimeline extends CurveTimeline {
-	public var slotIndex:Int;
+	public var slotIndex:Int = Default.int;
 	public var frames:Vector<Number>;
 	public var frameVertices:Vector<Vector<Number>>;
-	public var attachment:VertexAttachment;
+	public var attachment:VertexAttachment = Default.object;
 
 	public function new (frameCount:Int) {
 		super(frameCount);

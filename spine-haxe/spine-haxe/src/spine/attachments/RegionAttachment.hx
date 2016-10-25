@@ -41,26 +41,26 @@ import spine.Bone;
 	public var X4:Int = 6;
 	public var Y4:Int = 7;
 
-	public var x:Number;
-	public var y:Number;
+	public var x:Number = Default.float;
+	public var y:Number = Default.float;
 	public var scaleX:Number = 1;
 	public var scaleY:Number = 1;
-	public var rotation:Number;
-	public var width:Number;
-	public var height:Number;
+	public var rotation:Number = Default.float;
+	public var width:Number = Default.float;
+	public var height:Number = Default.float;
 	public var r:Number = 1;
 	public var g:Number = 1;
 	public var b:Number = 1;
 	public var a:Number = 1;
 
-	public var path:String;
-	public var rendererObject:Null<Dynamic>;
-	public var regionOffsetX:Number; // Pixels stripped from the bottom left, unrotated.
-	public var regionOffsetY:Number;
-	public var regionWidth:Number; // Unrotated, stripped size.
-	public var regionHeight:Number;
-	public var regionOriginalWidth:Number; // Unrotated, unstripped size.
-	public var regionOriginalHeight:Number;
+	public var path:String = Default.object;
+	public var rendererObject:Null<Dynamic> = Default.object;
+	public var regionOffsetX:Number = Default.float; // Pixels stripped from the bottom left, unrotated.
+	public var regionOffsetY:Number = Default.float;
+	public var regionWidth:Number = Default.float; // Unrotated, stripped size.
+	public var regionHeight:Number = Default.float;
+	public var regionOriginalWidth:Number = Default.float; // Unrotated, unstripped size.
+	public var regionOriginalHeight:Number = Default.float;
 
 	public var offset:Vector<Number> = new Vector<Number>();
 	public var uvs:Vector<Number> = new Vector<Number>();

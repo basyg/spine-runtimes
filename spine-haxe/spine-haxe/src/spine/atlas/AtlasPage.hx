@@ -31,15 +31,15 @@
 package spine.atlas;
 
 class AtlasPage {
-	public var name:String;
-	public var format:Format;
-	public var minFilter:TextureFilter;
-	public var magFilter:TextureFilter;
-	public var uWrap:TextureWrap;
-	public var vWrap:TextureWrap;
-	public var rendererObject:Null<Dynamic>;
-	public var width:Int;
-	public var height:Int;
+	public var name:String = Default.object;
+	public var format:Format = Default.object;
+	public var minFilter:TextureFilter = Default.object;
+	public var magFilter:TextureFilter = Default.object;
+	public var uWrap:TextureWrap = Default.object;
+	public var vWrap:TextureWrap = Default.object;
+	public var rendererObject:Null<Dynamic> = Default.object;
+	public var width:Int = Default.int;
+	public var height:Int = Default.int;
 	
 	public function new () {		
 	}

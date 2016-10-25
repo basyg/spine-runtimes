@@ -36,7 +36,7 @@ class SkeletonBounds {
 
 	public var boundingBoxes:Vector<BoundingBoxAttachment> = new Vector<BoundingBoxAttachment>();
 	public var polygons:Vector<Polygon> = new Vector<Polygon>();
-	public var minX:Number; public var minY:Number; public var maxX:Number; public var maxY:Number;
+	public var minX:Number = Default.float; public var minY:Number = Default.float; public var maxX:Number = Default.float; public var maxY:Number = Default.float;
 	
 	public function new () {		
 	}

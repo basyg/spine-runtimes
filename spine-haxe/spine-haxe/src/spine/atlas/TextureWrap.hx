@@ -31,9 +31,9 @@
 package spine.atlas;
 
 class TextureWrap {
-	public static var mirroredRepeat(default, null):TextureWrap = new TextureWrap(0, "mirroredRepeat");
-	public static var clampToEdge(default, null):TextureWrap = new TextureWrap(1, "clampToEdge");
-	public static var repeat(default, null):TextureWrap = new TextureWrap(2, "repeat");
+	public static var mirroredRepeat(default, never):TextureWrap = new TextureWrap(0, "mirroredRepeat");
+	public static var clampToEdge(default, never):TextureWrap = new TextureWrap(1, "clampToEdge");
+	public static var repeat(default, never):TextureWrap = new TextureWrap(2, "repeat");
 
 	public var ordinal:Int;
 	public var name:String;

@@ -34,12 +34,12 @@ import spine.attachments.Attachment;
 class Slot {
 	@:allow(spine) var _data:SlotData;
 	@:allow(spine) var _bone:Bone;
-	public var r:Number;
-	public var g:Number;
-	public var b:Number;
-	public var a:Number;
-	@:allow(spine) var _attachment:Attachment;
-	private var _attachmentTime:Number;
+	public var r:Number = Default.float;
+	public var g:Number = Default.float;
+	public var b:Number = Default.float;
+	public var a:Number = Default.float;
+	@:allow(spine) var _attachment:Attachment = Default.object;
+	private var _attachmentTime:Number = Default.float;
 	public var attachmentVertices:Vector<Number> = new Vector<Number>();
 
 	public function new (data:SlotData, bone:Bone) {

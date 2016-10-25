@@ -38,7 +38,7 @@ class TransformConstraintTimeline extends CurveTimeline {
 	 @:allow(spine) static inline var PREV_TIME:Int = -5; @:allow(spine) static inline var PREV_ROTATE:Int = -4; @:allow(spine) static inline var PREV_TRANSLATE:Int = -3; @:allow(spine) static inline var PREV_SCALE:Int = -2; @:allow(spine) static inline var PREV_SHEAR:Int = -1;
 	 @:allow(spine) static inline var ROTATE:Int = 1; @:allow(spine) static inline var TRANSLATE:Int = 2; @:allow(spine) static inline var SCALE:Int = 3; @:allow(spine) static inline var SHEAR:Int = 4;
 
-	public var transformConstraintIndex:Int;
+	public var transformConstraintIndex:Int = Default.int;
 	public var frames:Vector<Number>; // time, rotate mix, translate mix, scale mix, shear mix, ...
 
 	public function new (frameCount:Int) {

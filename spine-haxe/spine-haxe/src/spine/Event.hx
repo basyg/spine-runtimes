@@ -33,9 +33,9 @@ package spine;
 class Event {
 	@:allow(spine) var _data:EventData;
 	public var time:Number;
-	public var intValue:Int;
-	public var floatValue:Number;
-	public var stringValue:String;
+	public var intValue:Int = Default.int;
+	public var floatValue:Number = Default.float;
+	public var stringValue:String = Default.object;
 
 	public function new (time:Number, data:EventData) {
 		if (data == null) throw new ArgumentError("data cannot be null.");

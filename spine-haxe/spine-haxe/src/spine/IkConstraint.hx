@@ -37,7 +37,7 @@ class IkConstraint implements Updatable {
 	public var mix:Number;
 	public var bendDirection:Int;
 	
-	public var level:Int;	
+	public var level:Int = Default.int;	
 
 	public function new (data:IkConstraintData, skeleton:Skeleton) {
 		if (data == null) throw new ArgumentError("data cannot be null.");

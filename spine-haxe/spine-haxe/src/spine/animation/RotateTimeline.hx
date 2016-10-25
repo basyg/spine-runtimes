@@ -38,7 +38,7 @@ class RotateTimeline extends CurveTimeline {
 	static private inline var PREV_TIME:Int = -2; static private inline var PREV_ROTATION:Int = -1;
 	static private inline var ROTATION:Int = 1;
 
-	public var boneIndex:Int;
+	public var boneIndex:Int = Default.int;
 	public var frames:Vector<Number>; // time, value, ...
 
 	public function new (frameCount:Int) {

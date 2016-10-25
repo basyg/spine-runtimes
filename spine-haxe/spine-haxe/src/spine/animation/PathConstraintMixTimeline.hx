@@ -38,7 +38,7 @@ class PathConstraintMixTimeline extends CurveTimeline {
 	@:allow(spine) static inline var PREV_TIME:Int = -3; @:allow(spine) static inline var PREV_ROTATE:Int = -2; @:allow(spine) static inline var PREV_TRANSLATE:Int = -1;
 	@:allow(spine) static inline var ROTATE:Int = 1; @:allow(spine) static inline var TRANSLATE:Int = 2;
 
-	public var pathConstraintIndex:Int;
+	public var pathConstraintIndex:Int = Default.int;
 
 	public var frames:Vector<Number>; // time, rotate mix, translate mix, ...
 

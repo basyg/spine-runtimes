@@ -38,7 +38,7 @@ class IkConstraintTimeline extends CurveTimeline {
 	@:allow(spine) static inline var PREV_TIME:Int = -3; @:allow(spine) static inline var PREV_MIX:Int = -2; @:allow(spine) static inline var PREV_BEND_DIRECTION:Int = -1;
 	@:allow(spine) static inline var MIX:Int = 1; @:allow(spine) static inline var BEND_DIRECTION:Int = 2;
 
-	public var ikConstraintIndex:Int;
+	public var ikConstraintIndex:Int = Default.int;
 	public var frames:Vector<Number>; // time, mix, bendDirection, ...
 
 	public function new (frameCount:Int) {

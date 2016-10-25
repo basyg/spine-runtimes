@@ -31,9 +31,9 @@
 package spine;
 
 class RotateMode {
-	public static var tangent(default, null):RotateMode = new RotateMode();
-	public static var chain(default, null):RotateMode = new RotateMode();
-	public static var chainScale(default, null):RotateMode = new RotateMode();
+	public static var tangent(default, never):RotateMode = new RotateMode();
+	public static var chain(default, never):RotateMode = new RotateMode();
+	public static var chainScale(default, never):RotateMode = new RotateMode();
 	
 	public function new () {
 	}

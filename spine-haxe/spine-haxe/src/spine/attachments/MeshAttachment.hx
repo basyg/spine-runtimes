@@ -31,36 +31,36 @@
 package spine.attachments;
 
 /*dynamic*/ class MeshAttachment extends VertexAttachment {
-	public var worldVertices:Vector<Number>;
-	public var uvs:Vector<Number>;
-	public var regionUVs:Vector<Number>;
-	public var triangles:Vector<UInt>;	
+	public var worldVertices:Vector<Number> = Default.object;
+	public var uvs:Vector<Number> = Default.object;
+	public var regionUVs:Vector<Number> = Default.object;
+	public var triangles:Vector<UInt> = Default.object;	
 	public var r:Number = 1;
 	public var g:Number = 1;
 	public var b:Number = 1;
 	public var a:Number = 1;
-	public var hullLength:Int;
-	private var _parentMesh:MeshAttachment;
-	public var inheritDeform:Bool;
+	public var hullLength:Int = Default.int;
+	private var _parentMesh:MeshAttachment = Default.object;
+	public var inheritDeform:Bool = Default.bool;
 
-	public var path:String;
-	public var rendererObject:Null<Dynamic>;
-	public var regionU:Number;
-	public var regionV:Number;
-	public var regionU2:Number;
-	public var regionV2:Number;
-	public var regionRotate:Bool;
-	public var regionOffsetX:Number; // Pixels stripped from the bottom left, unrotated.
-	public var regionOffsetY:Number;
-	public var regionWidth:Number; // Unrotated, stripped size.
-	public var regionHeight:Number;
-	public var regionOriginalWidth:Number; // Unrotated, unstripped size.
-	public var regionOriginalHeight:Number;
+	public var path:String = Default.object;
+	public var rendererObject:Null<Dynamic> = Default.object;
+	public var regionU:Number = Default.float;
+	public var regionV:Number = Default.float;
+	public var regionU2:Number = Default.float;
+	public var regionV2:Number = Default.float;
+	public var regionRotate:Bool = Default.bool;
+	public var regionOffsetX:Number = Default.float; // Pixels stripped from the bottom left, unrotated.
+	public var regionOffsetY:Number = Default.float;
+	public var regionWidth:Number = Default.float; // Unrotated, stripped size.
+	public var regionHeight:Number = Default.float;
+	public var regionOriginalWidth:Number = Default.float; // Unrotated, unstripped size.
+	public var regionOriginalHeight:Number = Default.float;
 
 	// Nonessential.
-	public var edges:Vector<Int>;
-	public var width:Number;
-	public var height:Number;
+	public var edges:Vector<Int> = Default.object;
+	public var width:Number = Default.float;
+	public var height:Number = Default.float;
 
 	public function new (name:String) {
 		super(name);

@@ -38,8 +38,8 @@ class SlotData {
 	public var g:Number = 1;
 	public var b:Number = 1;
 	public var a:Number = 1;
-	public var attachmentName:String;
-	public var blendMode:BlendMode;
+	public var attachmentName:String = Default.object;
+	public var blendMode:BlendMode = Default.object;
 
 	public function new (index:Int, name:String, boneData:BoneData) {
 		if (index < 0) throw new ArgumentError("index must be >= 0.");

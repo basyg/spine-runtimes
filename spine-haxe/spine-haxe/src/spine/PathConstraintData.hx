@@ -33,12 +33,12 @@ package spine;
 /*dynamic*/ class PathConstraintData {
 	@:allow(spine) var _name:String;
 	@:allow(spine) var _bones:Vector<BoneData> = new Vector<BoneData>();
-	public var target:SlotData;
-	public var positionMode:PositionMode;
-	public var spacingMode:SpacingMode;
-	public var rotateMode:RotateMode;
-	public var offsetRotation:Number;
-	public var position:Number; public var spacing:Number; public var rotateMix:Number; public var translateMix:Number;
+	public var target:SlotData = Default.object;
+	public var positionMode:PositionMode = Default.object;
+	public var spacingMode:SpacingMode = Default.object;
+	public var rotateMode:RotateMode = Default.object;
+	public var offsetRotation:Number = Default.float;
+	public var position:Number = Default.float; public var spacing:Number = Default.float; public var rotateMix:Number = Default.float; public var translateMix:Number = Default.float;
 
 	public function new (name:String) {
 		if (name == null) throw new ArgumentError("name cannot be null.");

@@ -34,9 +34,9 @@ import spine.Skeleton;
 import spine.Slot;
 
 /*dynamic*/ class VertexAttachment extends Attachment {
-	public var bones:Vector<Int>;
-	public var vertices:Vector<Number>;
-	public var worldVerticesLength:Int;
+	public var bones:Vector<Int> = Default.object;
+	public var vertices:Vector<Number> = Default.object;
+	public var worldVerticesLength:Int = Default.int;
 
 	public function new (name:String) {
 		super(name);

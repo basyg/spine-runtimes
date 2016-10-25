@@ -31,25 +31,25 @@
 package spine.atlas;
 
 class AtlasRegion {
-	public var page:AtlasPage;
-	public var name:String;
-	public var x:Int;
-	public var y:Int;
-	public var width:Int;
-	public var height:Int;
-	public var u:Number;
-	public var v:Number;
-	public var u2:Number;
-	public var v2:Number;
-	public var offsetX:Number;
-	public var offsetY:Number;
-	public var originalWidth:Int;
-	public var originalHeight:Int;
-	public var index:Int;
-	public var rotate:Bool;
-	public var splits:Vector<Int>;
-	public var pads:Vector<Int>;
-	public var rendererObject:Null<Dynamic>;
+	public var page:AtlasPage = Default.object;
+	public var name:String = Default.object;
+	public var x:Int = Default.int;
+	public var y:Int = Default.int;
+	public var width:Int = Default.int;
+	public var height:Int = Default.int;
+	public var u:Number = Default.float;
+	public var v:Number = Default.float;
+	public var u2:Number = Default.float;
+	public var v2:Number = Default.float;
+	public var offsetX:Number = Default.float;
+	public var offsetY:Number = Default.float;
+	public var originalWidth:Int = Default.int;
+	public var originalHeight:Int = Default.int;
+	public var index:Int = Default.int;
+	public var rotate:Bool = Default.bool;
+	public var splits:Vector<Int> = Default.object;
+	public var pads:Vector<Int> = Default.object;
+	public var rendererObject:Null<Dynamic> = Default.object;
 	
 	public function new () {		
 	}

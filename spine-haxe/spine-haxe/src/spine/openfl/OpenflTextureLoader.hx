@@ -28,23 +28,34 @@
  * POSSIBILITY OF SUCH DAMAGE.
  *****************************************************************************/
 
-package spine.flash;
-import spine.SkeletonData;
-import spine.animation.AnimationState;
-import spine.animation.AnimationStateData;
+package spine.openfl;
+import openfl.Assets;
+import openfl.display.BitmapData;
 
-class SkeletonAnimation extends SkeletonSprite {
-	public var state:AnimationState;
+import spine.atlas.AtlasPage;
+import spine.atlas.AtlasRegion;
+import spine.atlas.TextureLoader;
 
-	public function new (skeletonData:SkeletonData, stateData:AnimationStateData = null) {
-		super(skeletonData);
-		state = new AnimationState(stateData != null ? stateData : new AnimationStateData(skeletonData));
+class OpenflTextureLoader implements TextureLoader {
+	public var prefix:String;
+
+	public function new (prefix:String) {
+		this.prefix = prefix;
 	}
 
-	override public function advanceTime (time:Number) : Void {
-		state.update(time * timeScale);
-		state.apply(skeleton);
-		skeleton.updateWorldTransform();
-		super.advanceTime(time);
+	public function loadPage (page:AtlasPage, path:String) : Void {
+		var bitmapData:BitmapData = Assets.getBitmapData(prefix + path);
+		if (bitmapData == null)
+			throw new ArgumentError("BitmapData not found with name: " + prefix + path);
+		page.rendererObject = bitmapData;
+		page.width = bitmapData.width;
+		page.height = bitmapData.height;
+	}
+	
+	public function loadRegion (region:AtlasRegion) : Void {
+	}
+
+	public function unloadPage (page:AtlasPage) : Void {
+		cast(page.rendererObject, BitmapData).dispose();
 	}
 }

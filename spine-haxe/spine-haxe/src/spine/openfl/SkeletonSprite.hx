@@ -28,16 +28,16 @@
  * POSSIBILITY OF SUCH DAMAGE.
  *****************************************************************************/
 
-package spine.flash;
+package spine.openfl;
 import haxe.ds.WeakMap;
-import flash.display.Bitmap;
-import flash.display.BitmapData;
-import flash.display.BlendMode;
-import flash.display.Sprite;
-import flash.events.Event;
-import flash.geom.ColorTransform;
-import flash.geom.Point;
-import flash.geom.Rectangle;
+import openfl.display.Bitmap;
+import openfl.display.BitmapData;
+import openfl.display.BlendMode;
+import openfl.display.Sprite;
+import openfl.events.Event;
+import openfl.geom.ColorTransform;
+import openfl.geom.Point;
+import openfl.geom.Rectangle;
 
 import spine.Bone;
 import spine.Skeleton;
@@ -47,7 +47,7 @@ import spine.atlas.AtlasRegion;
 import spine.attachments.RegionAttachment;
 
 class SkeletonSprite extends Sprite {
-	static private var blendModes:Vector<String> = cast Vector.ofArray([
+	static private var blendModes:Vector<BlendMode> = Vector.ofArray([
 		BlendMode.NORMAL, BlendMode.ADD, BlendMode.MULTIPLY, BlendMode.SCREEN]);
 
 	private var _skeleton:Skeleton;
@@ -84,7 +84,7 @@ class SkeletonSprite extends Sprite {
 
 			var wrapper:Sprite = wrappers[regionAttachment];
 			if (wrapper == null) {
-				var region:AtlasRegion = AtlasRegion.safeCast(regionAttachment.rendererObject);
+				var region:AtlasRegion = cast(regionAttachment.rendererObject, AtlasRegion);
 				var regionHeight:Number = region.rotate ? region.width : region.height;
 				var regionData:BitmapData =  Std.instance(region.rendererObject, BitmapData);
 				if (regionData == null) {
@@ -123,7 +123,7 @@ class SkeletonSprite extends Sprite {
 				wrappers[regionAttachment] = wrapper;
 			}
 
-			wrapper.blendMode = cast blendModes[slot.data.blendMode.ordinal];
+			wrapper.blendMode = blendModes[slot.data.blendMode.ordinal];
 
 			var colorTransform:ColorTransform = wrapper.transform.colorTransform;
 			colorTransform.redMultiplier = skeleton.r * slot.r * regionAttachment.r;

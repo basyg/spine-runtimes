@@ -41,10 +41,10 @@ class Skeleton {
 	public var transformConstraints:Vector<TransformConstraint>;
 	public var pathConstraints:Vector<PathConstraint>;
 	private var _updateCache:Vector<Updatable> = new Vector<Updatable>();
-	private var _skin:Skin;
+	private var _skin:Skin = Default.object;
 	public var r:Number = 1; public var g:Number = 1; public var b:Number = 1; public var a:Number = 1;
 	public var time:Number = 0;
-	public var flipX:Bool; public var flipY:Bool;
+	public var flipX:Bool = Default.bool; public var flipY:Bool = Default.bool;
 	public var x:Number = 0; public var y:Number = 0;
 
 	public function new (data:SkeletonData) {

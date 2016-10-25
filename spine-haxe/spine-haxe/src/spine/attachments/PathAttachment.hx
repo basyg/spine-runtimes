@@ -31,8 +31,8 @@
 package spine.attachments;
 
 /*dynamic*/ class PathAttachment extends VertexAttachment {
-	public var lengths:Vector<Number>;
-	public var closed:Bool; public var constantSpeed:Bool;
+	public var lengths:Vector<Number> = Default.object;
+	public var closed:Bool = Default.bool; public var constantSpeed:Bool = Default.bool;
 
 	public function new (name:String) {
 		super(name);

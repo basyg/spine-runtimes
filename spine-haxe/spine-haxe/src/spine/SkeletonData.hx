@@ -33,18 +33,18 @@ import spine.animation.Animation;
 
 class SkeletonData {
 	/** May be null. */
-	public var name:String;
+	public var name:String = Default.object;
 	public var bones:Vector<BoneData> = new Vector<BoneData>(); // Ordered parents first.
 	public var slots:Vector<SlotData> = new Vector<SlotData>(); // Setup pose draw order.
 	public var skins:Vector<Skin> = new Vector<Skin>();
-	public var defaultSkin:Skin;
+	public var defaultSkin:Skin = Default.object;
 	public var events:Vector<EventData> = new Vector<EventData>();
 	public var animations:Vector<Animation> = new Vector<Animation>();
 	public var ikConstraints:Vector<IkConstraintData> = new Vector<IkConstraintData>();
 	public var transformConstraints:Vector<TransformConstraintData> = new Vector<TransformConstraintData>();
 	public var pathConstraints:Vector<PathConstraintData> = new Vector<PathConstraintData>();
-	public var width:Number; public var height:Number;
-	public var version:String; public var hash:String;
+	public var width:Number = Default.float; public var height:Number = Default.float;
+	public var version:String = Default.object; public var hash:String = Default.object;
 	
 	public function new () {		
 	}

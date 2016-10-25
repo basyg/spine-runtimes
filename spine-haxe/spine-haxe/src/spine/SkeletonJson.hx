@@ -36,7 +36,7 @@ import spine.animation.TransformConstraintTimeline;
 import spine.animation.ShearTimeline;
 import spine.attachments.PathAttachment;
 import spine.attachments.VertexAttachment;
-import flash.utils.ByteArray;
+import openfl.utils.ByteArray;
 
 import spine.animation.Animation;
 import spine.animation.AttachmentTimeline;
@@ -72,9 +72,9 @@ class SkeletonJson {
 
 		var root:TRoot;
 		if ((object is String))
-			root = haxe.Json.parse(String.safeCast(object));
+			root = haxe.Json.parse(cast(object, String));
 		else if ((object is ByteArray))
-			root = haxe.Json.parse(ByteArray.safeCast(object).readUTFBytes(ByteArray.safeCast(object).length));
+			root = haxe.Json.parse(cast(object, ByteArray).readUTFBytes(cast(object, ByteArray).length));
 		else if (Reflect.isObject(object))
 			root = object;
 		else
@@ -235,7 +235,7 @@ class SkeletonJson {
 			if (parentSkin == null) throw new Error("Skin not found: " + linkedMesh.skin);
 			var parentMesh:Attachment = parentSkin.getAttachment(linkedMesh.slotIndex, linkedMesh.parent);
 			if (parentMesh == null) throw new Error("Parent mesh not found: " + linkedMesh.parent);
-			linkedMesh.mesh.parentMesh = MeshAttachment.safeCast(parentMesh);
+			linkedMesh.mesh.parentMesh = cast(parentMesh, MeshAttachment);
 			linkedMesh.mesh.updateUVs();
 		}
 		linkedMeshes.length = 0;
@@ -679,7 +679,7 @@ class SkeletonJson {
 	static private function readCurve (curve:SpineMay<Dynamic>, timeline:CurveTimeline, frameIndex:Int) : Void {
 		if (curve.isNull) return;
 		var curve:Dynamic = curve!;
-		if ((curve is String) && String.safeCast(curve) == "stepped")
+		if ((curve is String) && cast(curve, String) == "stepped")
 			timeline.setStepped(frameIndex);
 		else if ((curve is TNumberArray)) {
 			var curve:Array<Number> = curve;

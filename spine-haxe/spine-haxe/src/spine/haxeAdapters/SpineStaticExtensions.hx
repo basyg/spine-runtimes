@@ -1,11 +1,7 @@
 package spine.haxeAdapters;
 
 class SpineStaticExtensions {
-
-	// static public function getStaticField<T>(type:Class<T>, fieldName:String):Dynamic> {
-	// 	return Reflect.field(type, fieldName);
-	// }
-
+	
 	@:generic
 	static public function getSpineEnum<T:{}>(type:Class<T>, enumName:String):T {
 		var field;

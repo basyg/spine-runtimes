@@ -33,17 +33,17 @@ package spine;
 class TransformConstraintData {
 	@:allow(spine) var _name:String;
 	@:allow(spine) var _bones:Vector<BoneData> = new Vector<BoneData>();
-	public var target:BoneData;
-	public var rotateMix:Number;
-	public var translateMix:Number;
-	public var scaleMix:Number;
-	public var shearMix:Number;
-	public var offsetRotation:Number;
-	public var offsetX:Number;
-	public var offsetY:Number;
-	public var offsetScaleX:Number;
-	public var offsetScaleY:Number;
-	public var offsetShearY:Number;
+	public var target:BoneData = Default.object;
+	public var rotateMix:Number = Default.float;
+	public var translateMix:Number = Default.float;
+	public var scaleMix:Number = Default.float;
+	public var shearMix:Number = Default.float;
+	public var offsetRotation:Number = Default.float;
+	public var offsetX:Number = Default.float;
+	public var offsetY:Number = Default.float;
+	public var offsetScaleX:Number = Default.float;
+	public var offsetScaleY:Number = Default.float;
+	public var offsetShearY:Number = Default.float;
 
 	public function new (name:String) {
 		if (name == null) throw new ArgumentError("name cannot be null.");

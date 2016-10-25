@@ -34,14 +34,14 @@ class BoneData {
 	@:allow(spine) var _index:Int;
 	@:allow(spine) var _name:String;
 	@:allow(spine) var _parent:BoneData;
-	public var length:Number;
-	public var x:Number;
-	public var y:Number;
-	public var rotation:Number;
+	public var length:Number = Default.float;
+	public var x:Number = Default.float;
+	public var y:Number = Default.float;
+	public var rotation:Number = Default.float;
 	public var scaleX:Number = 1;
 	public var scaleY:Number = 1;
-	public var shearX:Number;
-	public var shearY:Number;	
+	public var shearX:Number = Default.float;
+	public var shearY:Number = Default.float;	
 	public var inheritRotation:Bool = true;
 	public var inheritScale:Bool = true;
 

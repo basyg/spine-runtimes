@@ -31,13 +31,13 @@
 package spine.atlas;
 
 class Format {
-	public static var alpha(default, null):Format = new Format(0, "alpha");
-	public static var intensity(default, null):Format = new Format(1, "intensity");
-	public static var luminanceAlpha(default, null):Format = new Format(2, "luminanceAlpha");
-	public static var rgb565(default, null):Format = new Format(3, "rgb565");
-	public static var rgba4444(default, null):Format = new Format(4, "rgba4444");
-	public static var rgb888(default, null):Format = new Format(5, "rgb888");
-	public static var rgba8888(default, null):Format = new Format(6, "rgba8888");
+	public static var alpha(default, never):Format = new Format(0, "alpha");
+	public static var intensity(default, never):Format = new Format(1, "intensity");
+	public static var luminanceAlpha(default, never):Format = new Format(2, "luminanceAlpha");
+	public static var rgb565(default, never):Format = new Format(3, "rgb565");
+	public static var rgba4444(default, never):Format = new Format(4, "rgba4444");
+	public static var rgb888(default, never):Format = new Format(5, "rgb888");
+	public static var rgba8888(default, never):Format = new Format(6, "rgba8888");
 
 	public var ordinal:Int;
 	public var name:String;

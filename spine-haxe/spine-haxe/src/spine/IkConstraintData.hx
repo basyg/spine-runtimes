@@ -33,7 +33,7 @@ package spine;
 class IkConstraintData {
 	@:allow(spine) var _name:String;
 	public var bones:Vector<BoneData> = new Vector<BoneData>();
-	public var target:BoneData;
+	public var target:BoneData = Default.object;
 	public var bendDirection:Int = 1;
 	public var mix:Number = 1;
 

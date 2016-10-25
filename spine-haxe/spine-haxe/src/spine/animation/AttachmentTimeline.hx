@@ -33,7 +33,7 @@ import spine.Event;
 import spine.Skeleton;
 
 class AttachmentTimeline implements Timeline {
-	public var slotIndex:Int;
+	public var slotIndex:Int = Default.int;
 	public var frames:Vector<Number>; // time, ...
 	public var attachmentNames:Vector<String>;
 

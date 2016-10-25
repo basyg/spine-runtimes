@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project>
+	
+	<meta title="SpineHaxeExample" package="com.sample.spinehaxeexample" version="1.0.0" company="Company Name" />
+	<app main="Main" path="Export" file="SpineHaxeExample" />
+	
+	<source path="Source" />
+	<source path="..\..\spine-haxe\src" />
+	
+	<haxelib name="openfl" />
+	
+	<assets path="Assets" rename="assets" />
+	
+	<haxeflag name="--macro" value="include('spine', true)" />
+	
+	<haxedef name="advanced-telemetry" />
+	
+</project>

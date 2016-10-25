@@ -38,7 +38,7 @@ class PathConstraintPositionTimeline extends CurveTimeline {
 	@:allow(spine) static inline var PREV_TIME:Int = -2; @:allow(spine) static inline var PREV_VALUE:Int = -1;
 	@:allow(spine) static inline var VALUE:Int = 1;
 
-	public var pathConstraintIndex:Int;
+	public var pathConstraintIndex:Int = Default.int;
 
 	public var frames:Vector<Number>; // time, position, ...
 

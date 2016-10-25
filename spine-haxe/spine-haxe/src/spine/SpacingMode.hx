@@ -31,9 +31,9 @@
 package spine;
 
 class SpacingMode {
-	public static var length(default, null):SpacingMode = new SpacingMode();
-	public static var fixed(default, null):SpacingMode = new SpacingMode();
-	public static var percent(default, null):SpacingMode = new SpacingMode();
+	public static var length(default, never):SpacingMode = new SpacingMode();
+	public static var fixed(default, never):SpacingMode = new SpacingMode();
+	public static var percent(default, never):SpacingMode = new SpacingMode();
 	
 	public function new () {
 	}

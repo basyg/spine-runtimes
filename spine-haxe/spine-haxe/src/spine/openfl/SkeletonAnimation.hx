@@ -28,57 +28,23 @@
  * POSSIBILITY OF SUCH DAMAGE.
  *****************************************************************************/
 
-package spine.flash;
-import flash.display.Bitmap;
-import flash.display.BitmapData;
+package spine.openfl;
+import spine.SkeletonData;
+import spine.animation.AnimationState;
+import spine.animation.AnimationStateData;
 
-import spine.atlas.AtlasPage;
-import spine.atlas.AtlasRegion;
-import spine.atlas.TextureLoader;
+class SkeletonAnimation extends SkeletonSprite {
+	public var state:AnimationState;
 
-class FlashTextureLoader implements TextureLoader {
-	public var bitmapDatas:Map<String, BitmapData> = new Map();
-	public var singleBitmapData:BitmapData;
-
-	/** @param bitmaps A Bitmap or BitmapData for an atlas that has only one page, or for a multi page atlas an object where the
-	 * key is the image path and the value is the Bitmap or BitmapData. */
-	public function new (bitmaps:Dynamic) {
-		if ((bitmaps is BitmapData)) {
-			singleBitmapData = BitmapData.safeCast(bitmaps);
-			return;
-		}
-		if ((bitmaps is Bitmap)) {
-			singleBitmapData = Bitmap.safeCast(bitmaps).bitmapData;
-			return;
-		}
-
-		var bitmaps:DynamicMap<Dynamic> = bitmaps;
-		for (path in bitmaps.keys()) {
-			var object:Dynamic = bitmaps[path];
-			var bitmapData:BitmapData;
-			if ((object is BitmapData))
-				bitmapData = BitmapData.safeCast(object);
-			else if ((object is Bitmap))
-				bitmapData = Bitmap.safeCast(object).bitmapData;
-			else
-				throw new ArgumentError("Object for path \"" + path + "\" must be a Bitmap or BitmapData: " + object);
-			bitmapDatas[path] = bitmapData;
-		}
+	public function new (skeletonData:SkeletonData, stateData:AnimationStateData = null) {
+		super(skeletonData);
+		state = new AnimationState(stateData != null ? stateData : new AnimationStateData(skeletonData));
 	}
 
-	public function loadPage (page:AtlasPage, path:String) : Void {
-		var bitmapData:BitmapData = singleBitmapData != null ? singleBitmapData : bitmapDatas[path];
-		if (bitmapData == null)
-			throw new ArgumentError("BitmapData not found with name: " + path);
-		page.rendererObject = bitmapData;
-		page.width = bitmapData.width;
-		page.height = bitmapData.height;
-	}
-	
-	public function loadRegion (region:AtlasRegion) : Void {
-	}
-
-	public function unloadPage (page:AtlasPage) : Void {
-		BitmapData.safeCast(page.rendererObject).dispose();
+	override public function advanceTime (time:Number) : Void {
+		state.update(time * timeScale);
+		state.apply(skeleton);
+		skeleton.updateWorldTransform();
+		super.advanceTime(time);
 	}
 }

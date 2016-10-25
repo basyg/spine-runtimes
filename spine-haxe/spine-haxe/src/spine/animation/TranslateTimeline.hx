@@ -38,7 +38,7 @@ class TranslateTimeline extends CurveTimeline {
     @:allow(spine) static inline var PREV_TIME:Int = -3; @:allow(spine) static inline var PREV_X:Int = -2; @:allow(spine) static inline var PREV_Y:Int = -1;
     @:allow(spine) static inline var X:Int = 1; @:allow(spine) static inline var Y:Int = 2;
 
-	public var boneIndex:Int;
+	public var boneIndex:Int = Default.int;
 	public var frames:Vector<Number>; // time, value, value, ...
 
 	public function new (frameCount:Int) {

@@ -29,21 +29,21 @@
  *****************************************************************************/
 
 package spine.atlas;
-import flash.utils.ByteArray;
+import openfl.utils.ByteArray;
 
 class Atlas {
 	private var pages:Vector<AtlasPage> = new Vector<AtlasPage>();
 	private var regions:Vector<AtlasRegion> = new Vector<AtlasRegion>();
-	private var textureLoader:TextureLoader;
+	private var textureLoader:TextureLoader = Default.object;
 
 	/** @param object A String or ByteArray. */
 	public function new (object:Dynamic, textureLoader:TextureLoader) {
 		if (object == null)
 			return;
 		if ((object is String))
-			load(String.safeCast(object), textureLoader);
+			load(cast(object, String), textureLoader);
 		else if ((object is ByteArray))
-			load(ByteArray.safeCast(object).readUTFBytes(ByteArray.safeCast(object).length), textureLoader);
+			load(cast(object, ByteArray).readUTFBytes(cast(object, ByteArray).length), textureLoader);
 		else
 			throw new ArgumentError("object must be a TextureAtlas or AttachmentLoader.");
 	}
@@ -54,8 +54,7 @@ class Atlas {
 		this.textureLoader = textureLoader;
 
 		var reader:Reader = new Reader(atlasText);
-		var tuple:Array<String> = new Array();
-		// tuple.length = 4;
+		var tuple:Array<String> = [null, null, null, null];
 		var page:AtlasPage = null;
 		while (true) {
 			var line:String = reader.readLine();
@@ -165,14 +164,14 @@ class Atlas {
 
 private class Reader {
 	private var lines:Array<String>;
-	private var index:Int;
+	private var index:Int = Default.int;
 
 	public function new (text:String) {
 		lines = ~/\r\n|\r|\n/g.split(text);
 	}
 
 	public function trim (value:String) : String {
-		return ~/^\s+|\s+$/gs.replace(value, "");
+		return ~/^\s+|\s+$/g.replace(value, "");
 	}
 
 	public function readLine () : String {

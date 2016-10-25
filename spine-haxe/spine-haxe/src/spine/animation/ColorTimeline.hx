@@ -38,7 +38,7 @@ class ColorTimeline extends CurveTimeline {
 	@:allow(spine) static inline var PREV_TIME:Int = -5; @:allow(spine) static inline var  PREV_R:Int = -4; @:allow(spine) static inline var  PREV_G:Int = -3; @:allow(spine) static inline var  PREV_B:Int = -2; @:allow(spine) static inline var  PREV_A:Int = -1;
 	@:allow(spine) static inline var R:Int = 1; @:allow(spine) static inline var  G:Int = 2; @:allow(spine) static inline var  B:Int = 3; @:allow(spine) static inline var  A:Int = 4;
 
-	public var slotIndex:Int;
+	public var slotIndex:Int = Default.int;
 	public var frames:Vector<Number>; // time, r, g, b, a, ...
 
 	public function new (frameCount:Int) {

@@ -31,8 +31,8 @@
 package spine;
 	
 class PositionMode {
-	public static var fixed(default, null):PositionMode = new PositionMode();
-	public static var percent(default, null):PositionMode = new PositionMode();
+	public static var fixed(default, never):PositionMode = new PositionMode();
+	public static var percent(default, never):PositionMode = new PositionMode();
 	
 	public function new () {
 	}

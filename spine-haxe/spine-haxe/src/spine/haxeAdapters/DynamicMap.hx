@@ -21,6 +21,4 @@ abstract DynamicMap<T>(DynamicAccess<T>) from Dynamic to Dynamic {
 		return [for (key in keys) this.get(key)];
 	}
 
-	//public inline function iterator():Iterator<T> return values().iterator();
-
 }

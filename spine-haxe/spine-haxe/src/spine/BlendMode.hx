@@ -31,10 +31,10 @@
 package spine;
 
 class BlendMode {
-	public static var normal(default, null):BlendMode = new BlendMode(0);
-	public static var additive(default, null):BlendMode = new BlendMode(1);
-	public static var multiply(default, null):BlendMode = new BlendMode(2);
-	public static var screen(default, null):BlendMode = new BlendMode(3);
+	public static var normal(default, never):BlendMode = new BlendMode(0);
+	public static var additive(default, never):BlendMode = new BlendMode(1);
+	public static var multiply(default, never):BlendMode = new BlendMode(2);
+	public static var screen(default, never):BlendMode = new BlendMode(3);
 
 	public var ordinal:Int;
 
